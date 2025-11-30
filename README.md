@@ -32,7 +32,7 @@ However, the two implementations differ fundamentally in how they manage interna
 
 Below is a structured explanation of both systems.
 
-### Implementation 1
+### Implementation 1 — JSON-Based Snapshot Version Control
 
 This is a simpler, higher-level version control system that uses **JSON files**, hierarchical dictionaries, and file hashes to track changes.
 
@@ -92,7 +92,7 @@ This is a simpler, higher-level version control system that uses **JSON files**,
 * Requires full-snapshot reconstruction on checkout.
 * Lacks object-level deduplication beyond blobs.
 
-### Implementation 2
+### Implementation 2 — Git-Style Object Database Version Control
 
 This version control system closely follows the internal design of Git, including **blob**, **tree**, and **commit** objects stored in a structured object database.
 
@@ -189,3 +189,8 @@ Complexities are in terms of:
 | Snapshot Computation | Linear merge  | DAG-based incremental       | Git-style |
 | Code Simplicity      | Simple        | Complex                     | JSON      |
 | Real-world usability | Low           | Very High                   | Git-style |
+
+## References
+
+1. The second implementation is largely inspired by the Git-like Python project available at: https://github.com/RivaanRanawat/git-clone-python
+2. A highly detailed guide that explains Git internals with parallel code examples can be found here: https://www.leshenko.net/p/ugit/#
