@@ -155,6 +155,13 @@ This version control system closely follows the internal design of Git, includin
 
 ## Report
 
+Complexities are in terms of:
+* F = number of files
+* s = average file size
+* D = number of directories
+* C = number of commits
+* B = number of branches
+
 | Operation | Implementation 1 (JSON-Based) – Time | Implementation 2 (Git-Like Objects) – Time | Implementation 1 – Space | Implementation 2 – Space | Notes |
 |----------|----------------------------------------|----------------------------------------------|----------------------------|---------------------------|-------|
 | init | O(1) | O(1) | O(1) | O(1) | Create fixed folders/files |
