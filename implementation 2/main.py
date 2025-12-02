@@ -95,14 +95,14 @@ def main():
             vc_repository.branch(args.name, args.delete)
             
         elif args.command == "log":
-            if not vc_repository.git_dir.exists():
+            if not vc_repository.vc_dir.exists():
                 print("Not a git repository")
                 return
 
             vc_repository.log(args.max_count)
 
         elif args.command == "status":
-            if not vc_repository.git_dir.exists():
+            if not vc_repository.vc_dir.exists():
                 print("Not a git repository")
                 return
 

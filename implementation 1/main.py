@@ -96,9 +96,6 @@ def main():
                 print('VC Repository already exists')
                 return
             
-            if args.checkout:
-                vc_repository.checkout_commit(args.checkout)
-            
             author = args.author_name or ''
             email = args.author_email or ''
             vc_repository.commit(args.message, author, email)

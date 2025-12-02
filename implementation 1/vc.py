@@ -14,31 +14,34 @@ class VersionControl:
         self.commit_list = self.vc_dir_path / 'commit_list.json'
         self.index = self.vc_dir_path / 'index.json'
 
-    def init(self) -> None:
+    def init(self) -> bool:
         if self.vc_dir_path.exists():
-            print('Already a Version Control Directory')
-            return
+            return False
         
-        else:
-            os.mkdir(self.vc_dir_path)
-            os.mkdir(self.blob_path)
-            os.mkdir(self.commit_tree_path)
 
-            with open(self.stage_path, "w") as f:
-                json.dump({}, f, indent=4)
-            with open(self.commit_list, "w") as f:
-                json.dump({}, f, indent=4)
-            with open(self.index, "w") as f:
-                json.dump(
-                    {
-                        "current_branch": "master",
-                        "current_commit": "",
-                        "branches": { "master": "" },
-                        "current_snapshot": {}
-                    },
-                    f,
-                    indent=4
-                )
+        os.mkdir(self.vc_dir_path)
+        os.mkdir(self.blob_path)
+        os.mkdir(self.commit_tree_path)
+
+        with open(self.stage_path, "w") as f:
+            json.dump({}, f, indent=4)
+        with open(self.commit_list, "w") as f:
+            json.dump({}, f, indent=4)
+        with open(self.index, "w") as f:
+            json.dump(
+                {
+                    "current_branch": "master",
+                    "current_commit": "",
+                    "branches": { "master": "" },
+                    "current_snapshot": {}
+                },
+                f,
+                indent=4
+            )
+        
+        print(f'Initialized version control directory in {self.vc_dir_path}')
+            
+        return True
     
 
     def load_stage(self) -> any:
